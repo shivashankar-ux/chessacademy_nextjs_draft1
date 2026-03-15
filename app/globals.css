@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-maroon: #7B1F2E;
+  --color-maroon-light: #9B2A3E;
+  --color-maroon-dark: #5C1722;
+  --color-gold: #C9A84C;
+  --color-gold-light: #E8C96A;
+  --color-cream: #FAF7F2;
+  --color-cream-dark: #F0EAE0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: #1a1a1a;
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-maroon text-white font-semibold rounded-lg
+           hover:bg-maroon-800 transition-all duration-200 shadow-md hover:shadow-lg
+           focus:outline-none focus:ring-2 focus:ring-maroon-700 focus:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-maroon text-maroon font-semibold rounded-lg
+           hover:bg-maroon hover:text-white transition-all duration-200
+           focus:outline-none focus:ring-2 focus:ring-maroon-700 focus:ring-offset-2;
+  }
+
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-gold text-white font-bold rounded-lg
+           hover:bg-gold-dark transition-all duration-200 shadow-md hover:shadow-lg;
+  }
+
+  .section-title {
+    @apply font-display text-3xl md:text-4xl font-bold text-maroon;
+  }
+
+  .section-subtitle {
+    @apply font-body text-lg text-gray-600 mt-3 max-w-2xl;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-200 p-6;
+  }
+}
+
+/* Chess board pattern used as decorative element */
+.chess-pattern {
+  background-image:
+    repeating-conic-gradient(
+      rgba(123, 31, 46, 0.06) 0% 25%,
+      transparent 0% 50%
+    );
+  background-size: 40px 40px;
+}
+
+/* Subtle grain overlay */
+.grain::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+}
+
+/* Animation helpers */
+.animate-delay-100 { animation-delay: 0.1s; }
+.animate-delay-200 { animation-delay: 0.2s; }
+.animate-delay-300 { animation-delay: 0.3s; }
+.animate-delay-400 { animation-delay: 0.4s; }
+
+/* Ensure images are crisp */
+img { image-rendering: -webkit-optimize-contrast; }
